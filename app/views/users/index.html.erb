@@ -1,0 +1,22 @@
+<h1 class="text-center mt-4">alpha bloggers</h1>
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <% @users.each do |user| %>
+        <div class="col-md-4 mb-4"> 
+            <div class="card-body">
+               <%= link_to user.username, user%>
+              <h5 class="card-title"><%= pluralize(user.articles.count,"article") %></h5>
+              <div class="text-center mt-3">
+                <%= link_to 'View profile', user , class: 'btn btn-success btn-sm' %>
+                <%= link_to 'Edit profile', edit_user_path(user), class: 'btn btn-warning btn-sm' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>

@@ -1,0 +1,44 @@
+<!-- app/views/users/_form.html.erb -->
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :username, class: 'control-label' %>
+          <%= form.text_field :username, id: :user_username, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :email, class: 'control-label' %>
+          <%= form.email_field :email, id: :user_email, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password, class: 'control-label' %>
+          <%= form.password_field :password, id: :user_password, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password_confirmation, class: 'control-label' %>
+          <%= form.password_field :password_confirmation, id: :user_password_confirmation, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit(@user.new_record? ? "signup":"update Account,", class: 'btn btn-primary btn-sm') %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

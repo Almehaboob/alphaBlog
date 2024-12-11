@@ -1,0 +1,46 @@
+<h1 class="text-center my-4">Edit Article</h1>
+
+<!-- Display Error Messages -->
+<% if @article.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- Form for Editing Article -->
+<%= form_with model: @article, local: true, class: 'needs-validation' do |f| %>
+  <div class="container">
+    <div class="row">
+      <!-- Title Field -->
+      <div class="col-md-6 mb-3">
+        <%= f.label :title, class: 'form-label' %>
+        <%= f.text_field :title, class: 'form-control', required: true %>
+      </div>
+
+      <!-- Description Field -->
+      <div class="col-md-6 mb-3">
+        <%= f.label :description, class: 'form-label' %>
+        <%= f.text_area :description, class: 'form-control', rows: 4, required: true %>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center mt-3">
+      <%= f.submit "Update Article", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+<!-- Back to Article View Button -->
+<div class="text-center mt-3">
+  <%= link_to 'Back to Article', article_path(@article), class: 'btn btn-secondary' %>
+</div>
+
+<!-- Back to Articles List Button -->
+<div class="text-center mt-2">
+  <%= link_to 'Back to Articles', articles_path, class: 'btn btn-secondary' %>
+</div>

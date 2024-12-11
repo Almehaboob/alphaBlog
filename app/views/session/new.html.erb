@@ -1,0 +1,27 @@
+<h1>Login</h1>
+
+<%= form_with(scope: :session, url: login_path, method: :post, local: true, data: { turbo: false }) do |form| %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Login", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to "Forgot your password?", "#", class: "btn btn-link" %>
+<%= link_to "Sign up", signup_path, class: "btn btn-link" %>
